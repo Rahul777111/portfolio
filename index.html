@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,6 +12,7 @@
 </head>
 <body>
   <!-- Effects layers -->
+  <canvas id="star-canvas"></canvas>
   <canvas id="rain-canvas"></canvas>
   <canvas id="particle-canvas"></canvas>
   <div class="cursor"></div>
@@ -33,7 +34,12 @@
       <a href="#stack">Stack</a>
       <a href="#contact">Contact</a>
     </nav>
-    <a class="button magnetic" href="#contact">Hire Me</a>
+    <div class="header-right">
+      <button id="theme-toggle" class="theme-btn magnetic" aria-label="Toggle theme" title="Toggle dark/light mode">
+        <span class="moon-icon">&#9790;</span>
+      </button>
+      <a class="button magnetic" href="#contact">Hire Me</a>
+    </div>
   </header>
 
   <main>
@@ -90,7 +96,6 @@
           </div>
           <div class="project-number">01</div>
         </article>
-
         <article class="project-card glass reveal tilt">
           <div class="project-top">
             <span class="tag">Concept</span>
@@ -98,12 +103,9 @@
           </div>
           <h3>Revenue Pulse</h3>
           <p>A concept analytics dashboard with live KPI cards, neon charts, and premium dark-mode interactions.</p>
-          <div class="project-links">
-            <a href="#contact">Request Build &rarr;</a>
-          </div>
+          <div class="project-links"><a href="#contact">Request Build &rarr;</a></div>
           <div class="project-number">02</div>
         </article>
-
         <article class="project-card glass reveal tilt">
           <div class="project-top">
             <span class="tag">Concept</span>
@@ -111,9 +113,7 @@
           </div>
           <h3>Motion Studio</h3>
           <p>Experimental landing page mixing layered blur, directional hover, depth, and dramatic hero composition.</p>
-          <div class="project-links">
-            <a href="#contact">Work Together &rarr;</a>
-          </div>
+          <div class="project-links"><a href="#contact">Work Together &rarr;</a></div>
           <div class="project-number">03</div>
         </article>
       </div>
