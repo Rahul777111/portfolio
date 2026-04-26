@@ -4,26 +4,30 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rahul — Portfolio</title>
-  <meta name="description" content="Premium developer portfolio with cinematic visuals, raindrops, and motion." />
+  <meta name="description" content="Premium developer portfolio with cinematic visuals, raindrops, stars, and 4D-like motion depth." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- Effects layers -->
-  <canvas id="star-canvas"></canvas>
-  <canvas id="rain-canvas"></canvas>
-  <canvas id="particle-canvas"></canvas>
-  <div class="cursor"></div>
-  <div class="cursor-ring"></div>
-  <div class="noise"></div>
-  <div class="bg-orb orb-1"></div>
-  <div class="bg-orb orb-2"></div>
-  <div class="bg-orb orb-3"></div>
-  <div class="bg-grid"></div>
+  <div class="depth-wrap">
+    <canvas id="star-canvas"></canvas>
+    <canvas id="rain-canvas"></canvas>
+    <canvas id="particle-canvas"></canvas>
+    <div class="light-beam beam-1"></div>
+    <div class="light-beam beam-2"></div>
+    <div class="cursor"></div>
+    <div class="cursor-ring"></div>
+    <div class="noise"></div>
+    <div class="vignette"></div>
+    <div class="bg-orb orb-1 depth-layer" data-depth="14"></div>
+    <div class="bg-orb orb-2 depth-layer" data-depth="22"></div>
+    <div class="bg-orb orb-3 depth-layer" data-depth="10"></div>
+    <div class="bg-grid depth-layer" data-depth="8"></div>
+  </div>
 
-  <header class="site-header glass">
+  <header class="site-header glass depth-layer" data-depth="18">
     <div class="brand">
       <span class="brand-dot"></span>
       <span>Rahul</span>
@@ -43,33 +47,36 @@
   </header>
 
   <main>
-    <section class="hero">
-      <div class="eyebrow reveal">AVAILABLE FOR FREELANCE &bull; FULL STACK &bull; AI</div>
-      <h1 class="hero-title reveal">
+    <section class="hero section-3d">
+      <div class="eyebrow reveal depth-layer" data-depth="24">AVAILABLE FOR FREELANCE &bull; FULL STACK &bull; AI</div>
+      <h1 class="hero-title reveal hero-3d depth-layer" data-depth="32">
         I build <span class="shimmer-text">beautiful</span>,<br>
         high-impact digital<br>
         experiences.
       </h1>
-      <p class="hero-copy reveal">
+      <p class="hero-copy reveal depth-layer" data-depth="18">
         Developer, builder, and product-focused creator crafting premium web experiences with motion, contrast, and clean systems.
       </p>
-      <div class="hero-actions reveal">
+      <div class="hero-actions reveal depth-layer" data-depth="20">
         <a class="button button-primary magnetic" href="#projects">See Projects</a>
         <a class="button button-secondary magnetic" href="https://github.com/Rahul777111" target="_blank" rel="noreferrer">GitHub &nearr;</a>
       </div>
-      <div class="hero-metrics reveal">
-        <div class="metric glass"><strong>10+</strong><span>UI Concepts</span></div>
-        <div class="metric glass"><strong>Full Stack</strong><span>React &bull; Node &bull; AI</span></div>
-        <div class="metric glass"><strong>Fast</strong><span>Responsive &bull; Animated</span></div>
+      <div class="hero-metrics reveal depth-layer" data-depth="22">
+        <div class="metric glass float-card"><strong>10+</strong><span>UI Concepts</span></div>
+        <div class="metric glass float-card"><strong>Full Stack</strong><span>React &bull; Node &bull; AI</span></div>
+        <div class="metric glass float-card"><strong>Fast</strong><span>Responsive &bull; Animated</span></div>
       </div>
+      <div class="hero-ring ring-1"></div>
+      <div class="hero-ring ring-2"></div>
+      <div class="hero-glass-slab glass depth-layer" data-depth="26"></div>
     </section>
 
-    <section id="about" class="section two-col">
-      <div class="section-title reveal">
+    <section id="about" class="section two-col section-3d">
+      <div class="section-title reveal depth-layer" data-depth="18">
         <span class="section-kicker">ABOUT</span>
         <h2>Sharp visuals.<br>Clean logic.<br>Zero boring screens.</h2>
       </div>
-      <div class="section-copy glass reveal">
+      <div class="section-copy glass reveal depth-layer floating-panel" data-depth="24">
         <p>I care about products that look expensive, feel smooth, and actually work. I like strong typography, cinematic lighting, layered motion, and interfaces that feel alive without becoming messy.</p>
         <div class="about-tags">
           <span>UI/UX Design</span><span>Frontend Dev</span><span>AI Integration</span><span>Fullstack</span>
@@ -77,26 +84,26 @@
       </div>
     </section>
 
-    <section id="projects" class="section">
-      <div class="section-title reveal">
+    <section id="projects" class="section section-3d">
+      <div class="section-title reveal depth-layer" data-depth="18">
         <span class="section-kicker">PROJECTS</span>
         <h2>Selected work</h2>
       </div>
       <div class="project-grid">
-        <article class="project-card glass reveal tilt featured">
+        <article class="project-card glass reveal tilt holo-card featured depth-layer" data-depth="26">
           <div class="project-glow"></div>
+          <div class="project-sheen"></div>
           <div class="project-top">
             <span class="tag">Featured</span>
             <span class="tag muted">AI</span>
           </div>
           <h3>TaskFlow AI</h3>
           <p>High-end AI task manager with glassmorphism dashboards, progress systems, and premium motion design.</p>
-          <div class="project-links">
-            <a href="https://github.com/Rahul777111/ai-task-manager" target="_blank" rel="noreferrer">View Repo &rarr;</a>
-          </div>
+          <div class="project-links"><a href="https://github.com/Rahul777111/ai-task-manager" target="_blank" rel="noreferrer">View Repo &rarr;</a></div>
           <div class="project-number">01</div>
         </article>
-        <article class="project-card glass reveal tilt">
+        <article class="project-card glass reveal tilt holo-card depth-layer" data-depth="24">
+          <div class="project-sheen"></div>
           <div class="project-top">
             <span class="tag">Concept</span>
             <span class="tag muted">SaaS</span>
@@ -106,7 +113,8 @@
           <div class="project-links"><a href="#contact">Request Build &rarr;</a></div>
           <div class="project-number">02</div>
         </article>
-        <article class="project-card glass reveal tilt">
+        <article class="project-card glass reveal tilt holo-card depth-layer" data-depth="24">
+          <div class="project-sheen"></div>
           <div class="project-top">
             <span class="tag">Concept</span>
             <span class="tag muted">Portfolio</span>
@@ -119,25 +127,25 @@
       </div>
     </section>
 
-    <section id="stack" class="section">
-      <div class="section-title reveal">
+    <section id="stack" class="section section-3d">
+      <div class="section-title reveal depth-layer" data-depth="18">
         <span class="section-kicker">STACK</span>
         <h2>What I use</h2>
       </div>
       <div class="stack-grid">
-        <div class="stack-item glass reveal"><span class="stack-icon">🌐</span>HTML</div>
-        <div class="stack-item glass reveal"><span class="stack-icon">🎨</span>CSS</div>
-        <div class="stack-item glass reveal"><span class="stack-icon">⚡</span>JavaScript</div>
-        <div class="stack-item glass reveal"><span class="stack-icon">⚛️</span>React</div>
-        <div class="stack-item glass reveal"><span class="stack-icon">🟢</span>Node.js</div>
-        <div class="stack-item glass reveal"><span class="stack-icon">🚂</span>Express</div>
-        <div class="stack-item glass reveal"><span class="stack-icon">🍃</span>MongoDB</div>
-        <div class="stack-item glass reveal"><span class="stack-icon">🤖</span>OpenAI</div>
+        <div class="stack-item glass reveal depth-layer float-card" data-depth="20"><span class="stack-icon">🌐</span>HTML</div>
+        <div class="stack-item glass reveal depth-layer float-card" data-depth="20"><span class="stack-icon">🎨</span>CSS</div>
+        <div class="stack-item glass reveal depth-layer float-card" data-depth="20"><span class="stack-icon">⚡</span>JavaScript</div>
+        <div class="stack-item glass reveal depth-layer float-card" data-depth="20"><span class="stack-icon">⚛️</span>React</div>
+        <div class="stack-item glass reveal depth-layer float-card" data-depth="20"><span class="stack-icon">🟢</span>Node.js</div>
+        <div class="stack-item glass reveal depth-layer float-card" data-depth="20"><span class="stack-icon">🚂</span>Express</div>
+        <div class="stack-item glass reveal depth-layer float-card" data-depth="20"><span class="stack-icon">🍃</span>MongoDB</div>
+        <div class="stack-item glass reveal depth-layer float-card" data-depth="20"><span class="stack-icon">🤖</span>OpenAI</div>
       </div>
     </section>
 
-    <section id="contact" class="section contact">
-      <div class="contact-card glass reveal">
+    <section id="contact" class="section contact section-3d">
+      <div class="contact-card glass reveal depth-layer floating-panel" data-depth="26">
         <span class="section-kicker">CONTACT</span>
         <h2>Want something<br><span class="shimmer-text">unforgettable?</span></h2>
         <p>Let&rsquo;s build a portfolio, SaaS, dashboard, or product page that actually punches above its weight.</p>
@@ -149,7 +157,7 @@
     </section>
   </main>
 
-  <footer class="site-footer">
+  <footer class="site-footer depth-layer" data-depth="12">
     <p>Built with obsession &bull; <a href="https://github.com/Rahul777111/portfolio" target="_blank">Source</a></p>
   </footer>
 
