@@ -1,16 +1,60 @@
 const html = document.documentElement;
 const themeBtn = document.getElementById('theme-toggle');
 const moonIcon = themeBtn.querySelector('.moon-icon');
+const hangerWrap = document.getElementById('theme-hanger-wrap');
 let isDark = true;
 function setTheme(dark) {
   isDark = dark;
   html.setAttribute('data-theme', dark ? 'dark' : 'light');
-  moonIcon.innerHTML = dark ? '&#9790;' : '&#9790;';
+  moonIcon.innerHTML = '&#9790;';
   localStorage.setItem('theme', dark ? 'dark' : 'light');
 }
 const saved = localStorage.getItem('theme');
 if (saved) setTheme(saved === 'dark');
+
 themeBtn.addEventListener('click', () => setTheme(!isDark));
+
+const swing = { angle: 0, velocity: 0, target: 0, lastX: 0, lastY: 0, lastT: performance.now(), active: false };
+function injectSwing(force) {
+  swing.velocity += Math.max(-2.5, Math.min(2.5, force));
+}
+if (hangerWrap) {
+  hangerWrap.addEventListener('mouseenter', (e) => {
+    swing.active = true;
+    swing.lastX = e.clientX;
+    swing.lastY = e.clientY;
+    swing.lastT = performance.now();
+  });
+  hangerWrap.addEventListener('mousemove', (e) => {
+    const now = performance.now();
+    const dt = Math.max(8, now - swing.lastT);
+    const dx = e.clientX - swing.lastX;
+    const dy = e.clientY - swing.lastY;
+    const speed = Math.sqrt(dx * dx + dy * dy) / dt;
+    const rect = hangerWrap.getBoundingClientRect();
+    const localX = (e.clientX - rect.left) / rect.width - 0.5;
+    injectSwing(localX * speed * 6.5 + dx * 0.03);
+    swing.lastX = e.clientX;
+    swing.lastY = e.clientY;
+    swing.lastT = now;
+  });
+  hangerWrap.addEventListener('mouseleave', () => {
+    swing.active = false;
+  });
+}
+function animateHanger() {
+  swing.velocity += (-swing.angle * 0.045);
+  swing.velocity *= 0.965;
+  swing.angle += swing.velocity;
+  const clamped = Math.max(-28, Math.min(28, swing.angle));
+  if (themeBtn) {
+    themeBtn.style.transform = `rotate(${clamped}deg)`;
+    const cartoon = document.getElementById('hanger-cartoon');
+    if (cartoon) cartoon.style.transform = `translate(-50%,6px) rotate(${clamped * 1.15}deg)`;
+  }
+  requestAnimationFrame(animateHanger);
+}
+animateHanger();
 
 const starCanvas = document.getElementById('star-canvas');
 const sctx = starCanvas.getContext('2d');
@@ -124,12 +168,13 @@ let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
 window.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; if (cursor) { cursor.style.left = `${mouseX}px`; cursor.style.top = `${mouseY}px`; } });
 function lerpRing() { ringX += (mouseX - ringX) * 0.13; ringY += (mouseY - ringY) * 0.13; if (ring) { ring.style.left = `${ringX}px`; ring.style.top = `${ringY}px`; } requestAnimationFrame(lerpRing); }
 lerpRing();
-[...document.querySelectorAll('a,button,.project-card,.stack-item,.metric')].forEach((el) => {
+[...document.querySelectorAll('a,button,.project-card,.stack-item,.metric,.theme-hanger')].forEach((el) => {
   el.addEventListener('mouseenter', () => { if (!ring) return; ring.style.width = '64px'; ring.style.height = '64px'; ring.style.background = 'rgba(124,58,237,0.1)'; ring.style.borderColor = 'rgba(196,181,253,0.6)'; });
   el.addEventListener('mouseleave', () => { if (!ring) return; ring.style.width = '40px'; ring.style.height = '40px'; ring.style.background = 'rgba(255,255,255,0.03)'; ring.style.borderColor = 'rgba(124,58,237,0.5)'; });
 });
 
 document.querySelectorAll('.magnetic').forEach((item) => {
+  if (item.classList.contains('theme-hanger')) return;
   item.addEventListener('mousemove', (e) => {
     const rect = item.getBoundingClientRect();
     const x = e.clientX - rect.left - rect.width / 2;
